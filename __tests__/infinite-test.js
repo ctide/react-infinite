@@ -31,7 +31,7 @@ describe('Rendering the React Infinite Component Wrapper', function() {
     var rootScrollable = TestUtils.findRenderedDOMComponentWithClass(infinite, 'root-scrollable-node')
     expect(rootScrollable.props.style.height).toEqual(800);
     expect(rootScrollable.props.style.overflowX).toEqual('hidden');
-    expect(rootScrollable.props.style.overflowY).toEqual('scroll');
+    expect(rootScrollable.props.style.overflowY).toEqual('hidden');
   });
 
   it('renders itself into the DOM with the correct container styles', function() {
@@ -47,7 +47,7 @@ describe('Rendering the React Infinite Component Wrapper', function() {
     var rootScrollable = TestUtils.findRenderedDOMComponentWithClass(infinite, 'root-scrollable-node')
     expect(rootScrollable.props.style.height).toEqual(800);
     expect(rootScrollable.props.style.overflowX).toEqual('hidden');
-    expect(rootScrollable.props.style.overflowY).toEqual('scroll');
+    expect(rootScrollable.props.style.overflowY).toEqual('hidden');
   });
 
   it('applies the provided class name to the root node', function() {

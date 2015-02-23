@@ -205,7 +205,7 @@
         return {
           height: this.props.containerHeight,
           overflowX: 'hidden',
-          overflowY: 'scroll'
+          overflowY: this.computeTotalScrollableHeight() > parseInt(this.props.containerHeight, 10) ? 'scroll' : 'hidden'
         };
       },
 
