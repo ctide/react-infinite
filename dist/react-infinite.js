@@ -113,12 +113,6 @@
         }
       },
 
-      componentWillMount: function() {
-        if (React.Children.count(this.props.children) === 1) {
-          throw new Error("Infinite does not do anything with only one child.")
-        }
-      },
-
       componentDidMount: function() {
         var that = this;
 
@@ -235,8 +229,13 @@
                               this.props.elementHeight,
             that = this;
 
-        var displayables = this.props.children.slice(this.state.displayIndexStart,
-                                                     this.state.displayIndexEnd);
+        var displayables;
+        if (React.Children.count(this.props.children) == 1) {
+          displayables = [this.props.children];
+        } else {
+          displayables = this.props.children.slice(this.state.displayIndexStart,
+                                                   this.state.displayIndexEnd);
+        }
 
         var infiniteScrollStyles = {};
         if (this.state.isScrolling) {

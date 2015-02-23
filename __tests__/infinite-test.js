@@ -19,16 +19,19 @@ var renderHelpers = {
 }
 
 describe('Rendering the React Infinite Component Wrapper', function() {
-  it('throws an error when given only one child', function() {
-    expect(function() {
-      TestUtils.renderIntoDocument(
-        <Infinite elementHeight={200}
-                  containerHeight={800}
-                  className={"root-scrollable-node"}>
-          <div/>
-        </Infinite>
+  it('works fine with only one child', function() {
+    var infinite = TestUtils.renderIntoDocument(
+      <Infinite elementHeight={200}
+                containerHeight={800}
+                className={"root-scrollable-node"}>
+        <div/>
+      </Infinite>
       );
-    }).toThrow();
+
+    var rootScrollable = TestUtils.findRenderedDOMComponentWithClass(infinite, 'root-scrollable-node')
+    expect(rootScrollable.props.style.height).toEqual(800);
+    expect(rootScrollable.props.style.overflowX).toEqual('hidden');
+    expect(rootScrollable.props.style.overflowY).toEqual('scroll');
   });
 
   it('renders itself into the DOM with the correct container styles', function() {
